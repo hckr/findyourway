@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Find your way</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <button ion-button block icon-right (click)="newRouteButtonClicked()">
+        Create new route
+    </button>
+    <ion-list>
+        <button ion-item *ngFor="let route of routes" (click)="routeClicked(route)">
+            {{ route.name }}
+        </button>
+    </ion-list>
+</ion-content>
