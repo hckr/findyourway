@@ -7,8 +7,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewRoutePage } from '../pages/new-route/new-route';
-import { RouteDetailsPage } from '../pages/route-details/route-details'
-import { CurrentRoutePage } from '../pages/current-route/current-route'
+import { RouteDetailsPage } from '../pages/route-details/route-details';
+import { CurrentRoutePage } from '../pages/current-route/current-route';
+import { NewRouteDurationsPage } from '../pages/new-route-durations/new-route-durations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CurrentRoutePage } from '../pages/current-route/current-route'
     HomePage,
     NewRoutePage,
     RouteDetailsPage,
-    CurrentRoutePage
+    CurrentRoutePage,
+    NewRouteDurationsPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { CurrentRoutePage } from '../pages/current-route/current-route'
     HomePage,
     NewRoutePage,
     RouteDetailsPage,
-    CurrentRoutePage
+    CurrentRoutePage,
+    NewRouteDurationsPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,20 @@
+
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ name }}: durations of stay</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let place of places">
+            <ion-label color>
+                {{ place.name }}
+            </ion-label>
+            <ion-input type="number" [(ngModel)]="place.duration_min" (change)="placeDurationChange(place)" min="1" placeholder="time in minutes to stay here"></ion-input>
+        </ion-item>
+    </ion-list>
+    <button ion-button block margin-top (tap)="takeRoute()">
+        Save and take route
+    </button>
+</ion-content>

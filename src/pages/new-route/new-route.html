@@ -4,7 +4,29 @@
     </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-
+    <ion-item>
+        <ion-label stacked no-margin>Route name</ion-label>
+        <ion-input type="text" [(ngModel)]="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label stacked>Type of transport</ion-label>
+    <ion-select [(ngModel)]="transport">
+        <ion-option *ngFor="let opt of transportTypes">{{ opt }}</ion-option>
+    </ion-select>
+    </ion-item>
+    <ion-list margin-top>
+        <ion-list-header no-margin>Pick up to 5 places to visit</ion-list-header>
+        <button ion-item>Add new place</button>
+        <ion-item *ngFor="let place of places">
+            <ion-label>
+                {{ place.name }}<br>
+                <span class="additional-info">{{ place.address }}</span>
+            </ion-label>
+            <ion-checkbox (ionChange)="placeCheckboxToggle(place)"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+    <button ion-button block margin-top (tap)="nextStep()">
+        Next
+    </button>
 </ion-content>
