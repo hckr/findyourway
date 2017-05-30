@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Current route: {{ currentRoute.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item no-lines margin-bottom>
+        Type of transport: {{ currentRoute.transport }}
+    </ion-item>
+    <ion-list>
+        <ion-list-header no-margin>Places in this route</ion-list-header>
+        <ion-item *ngFor="let place of currentRoute.places">
+            {{ place.name }}, {{ place.address }}
+            <span class="additional-info">(duration of stay: {{ place.duration }})</span>
+            <button ion-button outline item-end>Navigate</button>
+        </ion-item>
+    </ion-list>
+    <button ion-button block margin-top margin-bottom (tap)="finishCurrentRoute()">
+        Finish route
+    </button>
+</ion-content>

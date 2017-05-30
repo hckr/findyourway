@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NewRoutePage } from '../new-route/new-route'
 import { RouteDetailsPage } from '../route-details/route-details'
+import { CurrentRoutePage } from '../current-route/current-route'
 
 @Component({
     selector: 'page-home',
@@ -9,40 +10,33 @@ import { RouteDetailsPage } from '../route-details/route-details'
 })
 export class HomePage {
 
-    routes = [
-        {
-            name: 'Route 1',
-            places: [
-                { name: 'Place 1' },
-                { name: 'Place 2' },
-                { name: 'Place 3' },
-                { name: 'Place 4' },
-                { name: 'Place 5' }
-            ]
-        },
-        {
-            name: 'Route 2',
-            places: [
-                { name: 'Place 1' },
-                { name: 'Place 2' },
-                { name: 'Place 3' },
-                { name: 'Place 4' },
-                { name: 'Place 5' }
-            ]
-        }
-    ];
+    transportTypes = [ 'car', 'public transport', 'on foot', 'bike' ]
+    routes = [];
+    currentRoute = null;
+
+    ionViewWillEnter() {
+        this.updateCurrentRoute();
+    }
 
     constructor(public navCtrl: NavController) {
-        for (let i = 0; i < 100; ++i) {
+        this.updateCurrentRoute();
+
+        for (let i = 1; i < 10; ++i) {
             this.routes.push({
-                name: 'Route xx',
+                name: `Route ${i}`,
+                transport: this.randomTransport(),
                 places: [
-                    { name: 'Place 1x' },
-                    { name: 'Place 2x' },
-                    { name: 'Place 3x' }
+                    { name: 'Place 1', address: 'First Street 1 New York', duration: '1 h 23 m' },
+                    { name: 'Place 2', address: 'Second Street 2 New York', duration: '32 m' },
+                    { name: 'Place 3', address: 'Third Street 3 New York', duration: '2 h 13 m' }
                 ]
             })
         }
+    }
+
+    randomTransport() {
+        return this.transportTypes[
+            Math.floor(Math.random() * this.transportTypes.length)];
     }
 
     newRouteButtonClicked() {
@@ -55,4 +49,14 @@ export class HomePage {
         })
     }
 
+    currentRouteClicked() {
+        this.navCtrl.push(CurrentRoutePage);
+    }
+
+    updateCurrentRoute() {
+        this.currentRoute = null;
+        try {
+            this.currentRoute = JSON.parse(localStorage.currentRoute);
+        } catch (e) {}
+    }
 }

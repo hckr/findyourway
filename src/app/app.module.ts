@@ -8,13 +8,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewRoutePage } from '../pages/new-route/new-route';
 import { RouteDetailsPage } from '../pages/route-details/route-details'
+import { CurrentRoutePage } from '../pages/current-route/current-route'
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     NewRoutePage,
-    RouteDetailsPage
+    RouteDetailsPage,
+    CurrentRoutePage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { RouteDetailsPage } from '../pages/route-details/route-details'
     MyApp,
     HomePage,
     NewRoutePage,
-    RouteDetailsPage
+    RouteDetailsPage,
+    CurrentRoutePage
   ],
   providers: [
     StatusBar,

@@ -5,10 +5,17 @@
 </ion-header>
 
 <ion-content padding>
-    <button ion-button block icon-right (tap)="newRouteButtonClicked()">
+    <ion-list *ngIf="currentRoute">
+        <ion-list-header no-margin>Current route</ion-list-header>
+        <button ion-item (tap)="currentRouteClicked()">
+            {{ currentRoute.name }}
+        </button>
+    </ion-list>
+    <button ion-button block margin-top margin-bottom (tap)="newRouteButtonClicked()">
         Create new route
     </button>
     <ion-list>
+        <ion-list-header no-margin>Recent routes</ion-list-header>
         <button ion-item *ngFor="let route of routes" (tap)="routeClicked(route)">
             {{ route.name }}
         </button>
