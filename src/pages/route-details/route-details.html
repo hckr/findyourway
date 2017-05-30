@@ -14,8 +14,9 @@
     <ion-list>
         <ion-list-header no-margin>Places in this route</ion-list-header>
         <ion-item *ngFor="let place of selectedRoute.places">
-            {{ place.name }}, {{ place.address }}
-            <div item-content><span class="additional-info">(duration of stay: {{ place.duration }})</span></div>
+            {{ place.name }}<br>
+            {{ place.address }}<br>
+            <span class="additional-info">(duration of stay: {{ place.duration }})</span>
         </ion-item>
     </ion-list>
     <button ion-button block margin-top (tap)="takeRouteAgain()">

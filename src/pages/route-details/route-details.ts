@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { HomePage } from '../home/home'
 import { CurrentRoutePage } from '../current-route/current-route'
 
 @Component({
@@ -18,7 +19,10 @@ export class RouteDetailsPage {
 
     takeRouteAgain() {
         localStorage.currentRoute = JSON.stringify(this.selectedRoute);
-        this.navCtrl.push(CurrentRoutePage);
+        const index = this.navCtrl.getActive().index;
+        this.navCtrl.push(CurrentRoutePage).then(() => {
+            this.navCtrl.remove(index);
+        });
     }
 
 }
