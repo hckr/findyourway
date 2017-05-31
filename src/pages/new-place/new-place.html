@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Add new place</ion-title>
+    </ion-navbar>
+    <ion-searchbar [(ngModel)]="query" (ionChange)="filterPlaces()"></ion-searchbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <button ion-item *ngFor="let place of filteredPlaces" (tap)="placeSelected()">
+            {{ place.name }}<br>
+            <span class="additional-info">{{ place.address }}</span>
+        </button>
+    </ion-list>
+</ion-content>

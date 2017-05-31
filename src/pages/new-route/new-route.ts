@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { NewRouteDurationsPage } from '../new-route-durations/new-route-durations'
+import { NewPlacePage } from '../new-place/new-place'
+
+import { getPlaces } from '../../providers/places'
 
 @Component({
     selector: 'page-new-route',
@@ -15,29 +18,16 @@ export class NewRoutePage {
 
     transportTypes = [ 'car', 'public transport', 'on foot', 'bike' ]
 
-    ordinals = [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth',
-        'Sixth',
-        'Seventh',
-        'Eighth',
-        'Ninth'
-    ];
-
     constructor(public navCtrl: NavController, public navParams: NavParams) {
-        for (let i = 1; i < 10; ++i) {
-            this.places.push({
-                name: `Place ${i}`,
-                address: `${this.ordinals[i-1]} Street ${i} New York`
-            })
-        }
+        this.places = getPlaces(9);
     }
 
     placeCheckboxToggle(place) {
         place.selected = !place.selected;
+    }
+
+    addNewPlace() {
+        this.navCtrl.push(NewPlacePage);
     }
 
     nextStep(place) {

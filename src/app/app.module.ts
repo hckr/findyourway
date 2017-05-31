@@ -10,6 +10,7 @@ import { NewRoutePage } from '../pages/new-route/new-route';
 import { RouteDetailsPage } from '../pages/route-details/route-details';
 import { CurrentRoutePage } from '../pages/current-route/current-route';
 import { NewRouteDurationsPage } from '../pages/new-route-durations/new-route-durations';
+import { NewPlacePage } from '../pages/new-place/new-place'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NewRouteDurationsPage } from '../pages/new-route-durations/new-route-du
     NewRoutePage,
     RouteDetailsPage,
     CurrentRoutePage,
-    NewRouteDurationsPage
+    NewRouteDurationsPage,
+    NewPlacePage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { NewRouteDurationsPage } from '../pages/new-route-durations/new-route-du
     NewRoutePage,
     RouteDetailsPage,
     CurrentRoutePage,
-    NewRouteDurationsPage
+    NewRouteDurationsPage,
+    NewPlacePage
   ],
   providers: [
     StatusBar,

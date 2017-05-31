@@ -11,7 +11,7 @@
             <ion-label color>
                 {{ place.name }}
             </ion-label>
-            <ion-input type="number" [(ngModel)]="place.duration_min" (change)="placeDurationChange(place)" min="1" placeholder="time in minutes to stay here"></ion-input>
+            <ion-input type="number" [(ngModel)]="place.duration_min" (input)="placeDurationChange(place)" min="1" placeholder="time in minutes to stay here"></ion-input>
         </ion-item>
     </ion-list>
     <button ion-button block margin-top (tap)="takeRoute()">

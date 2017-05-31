@@ -17,7 +17,7 @@
     </ion-item>
     <ion-list margin-top>
         <ion-list-header no-margin>Pick up to 5 places to visit</ion-list-header>
-        <button ion-item>Add new place</button>
+        <button ion-item (tap)="addNewPlace()">Add new place</button>
         <ion-item *ngFor="let place of places">
             <ion-label>
                 {{ place.name }}<br>
