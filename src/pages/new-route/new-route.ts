@@ -41,7 +41,6 @@ export class NewRoutePage {
     }
 
     nextStep(place) {
-        console.log(this.transport);
         this.navCtrl.push(NewRouteDurationsPage, {
             name: this.name,
             transport: this.transport,

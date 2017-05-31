@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { CurrentRoutePage } from '../current-route/current-route'
 
@@ -11,17 +11,25 @@ export class RouteDetailsPage {
 
     selectedRoute: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+                public loadCtrl: LoadingController)
+    {
         this.selectedRoute = navParams.get('route');
-        console.log(this.selectedRoute);
     }
 
     takeRouteAgain() {
-        localStorage.currentRoute = JSON.stringify(this.selectedRoute);
-        const index = this.navCtrl.getActive().index;
-        this.navCtrl.push(CurrentRoutePage).then(() => {
-            this.navCtrl.remove(index);
+        let loader = this.loadCtrl.create({
+            content: 'Finding the best route...'
         });
+        loader.present();
+        setTimeout(() => {
+            localStorage.currentRoute = JSON.stringify(this.selectedRoute);
+            const index = this.navCtrl.getActive().index;
+            this.navCtrl.push(CurrentRoutePage).then(() => {
+                this.navCtrl.remove(index);
+            });
+            loader.dismiss();
+        }, 3000);
     }
 
 }

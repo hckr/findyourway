@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { CurrentRoutePage } from '../current-route/current-route'
 
@@ -13,7 +13,9 @@ export class NewRouteDurationsPage {
     transport: any;
     places: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+                public loadCtrl: LoadingController)
+    {
         this.name = navParams.get('name');
         this.transport = navParams.get('transport');
         this.places = navParams.get('places');
@@ -26,17 +28,24 @@ export class NewRouteDurationsPage {
     }
 
     takeRoute() {
-        localStorage.currentRoute = JSON.stringify({
-            name: this.name,
-            transport: this.transport,
-            places: this.places
+        let loader = this.loadCtrl.create({
+            content: 'Finding the best route...'
         });
-        const index = this.navCtrl.getActive().index,
-              prevIndex = this.navCtrl.getPrevious().index;
-        this.navCtrl.push(CurrentRoutePage).then(() => {
-            this.navCtrl.remove(index);
-            this.navCtrl.remove(prevIndex);
-        });
+        loader.present();
+        setTimeout(() => {
+            localStorage.currentRoute = JSON.stringify({
+                name: this.name,
+                transport: this.transport,
+                places: this.places
+            });
+            const index = this.navCtrl.getActive().index,
+                  prevIndex = this.navCtrl.getPrevious().index;
+            this.navCtrl.push(CurrentRoutePage).then(() => {
+                this.navCtrl.remove(index);
+                this.navCtrl.remove(prevIndex);
+            });
+            loader.dismiss();
+        }, 3000);
     }
 
 }
