@@ -31,7 +31,12 @@ export class NewRouteDurationsPage {
             transport: this.transport,
             places: this.places
         });
-        this.navCtrl.push(CurrentRoutePage);
+        const index = this.navCtrl.getActive().index,
+              prevIndex = this.navCtrl.getPrevious().index;
+        this.navCtrl.push(CurrentRoutePage).then(() => {
+            this.navCtrl.remove(index);
+            this.navCtrl.remove(prevIndex);
+        });
     }
 
 }
