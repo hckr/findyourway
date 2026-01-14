@@ -13,9 +13,9 @@
     },
     "dependencies": {
         "@angular/common": "4.1.2",
-        "@angular/compiler": "4.1.2",
+        "@angular/compiler": "19.2.18",
         "@angular/compiler-cli": "4.1.2",
-        "@angular/core": "4.1.2",
+        "@angular/core": "19.2.18",
         "@angular/forms": "4.1.2",
         "@angular/http": "4.1.2",
         "@angular/platform-browser": "4.1.2",
